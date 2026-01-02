@@ -1,6 +1,7 @@
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 from sklearn import datasets
+from sklearn.metrics import accuracy_score, confusion_matrix
 
 iris = datasets.load_iris()
 X = iris.data
@@ -14,4 +15,12 @@ knn = KNeighborsClassifier()
 knn.fit(X_train, y_train)
 
 y_pred = knn.predict(X_test)
-print(y_pred)
+
+# 計算 Accuracy
+acc = accuracy_score(y_test, y_pred)
+print("Accuracy:", acc)
+
+# 計算 Confusion Matrix
+cm = confusion_matrix(y_test, y_pred)
+print("Confusion Matrix:")
+print(cm)
